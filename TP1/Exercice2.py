@@ -113,4 +113,15 @@ if __name__ == '__main__':
 '''
 - 4 Après memoisation, le mot le plus proche est trouvé instantanément. Alors que le premier passage met un peu de temps.
 
+- 7 La complexité d'un dictionnaire en python est O(1) par conséquent cette amélioration est pertinente !
+    Elle nous permet d'obtenir le résultat déjà calculé instantanémement !
+    
+    La distance d’édition ne donne pas la suggestion qu’un humain trouverait “naturelle”.
+    En effet si nous prenons par exemple le mot "Sport", et si la distance d'edition la plus petite trouvé est de 5 
+    alors on peut se retrouver avec des mots suggéré tel que "Chien", "Jouer" etc
+    Par conséquent la suggestion n'est pas "naturelle".
+    Une idée pour corriger ce problème est d'avoir une distance d'edition minimal par rapport à la taille du mot.
+    Par exemple un mot de 4 lettres, la distance d'etition minimal serait 2, pour 6 lettres se serait 3, ainsi de suite.
+    On recupère la taille du mot, cette taille est divisé par 2 pour connaitre la distance d'edition minimal.
+    Si cette condition n'est pas atteinte alors il n'y a aucun mot suggéré.
 '''
