@@ -74,3 +74,47 @@ dict = {}
 if not value in dict :
    #TODO
 ```
+14. Itérer sur deux listes en parallèle : 
+```
+for f, b in zip(foo, bar):
+    print(f, b)
+```
+Le zip s'arrête lorsque le plus petit des foo ou bar s'arrête.
+Zip retourne un itérateur de tuples
+
+15. Taille d'une chaine de caractère :
+```
+len("MyWord")
+```
+16. Valeur absolue :
+```
+abs(1 - 2) # = 1
+```
+17. Récupérer tout les caractères d'une chaine de caractère sauf la première.
+```
+string = "String"
+print(string[1:]) # print "tring"
+```
+
+18. Lire un fichier sans les caractères de fin de ligne :
+```
+f = open("file", 'r')
+x = f.read().splitlines()
+f.close()
+```
+
+19. Creer un fichier si il existe pas :
+```
+open('file.txt', 'w+')
+```
+
+20. Pour sauvegarder et charger un dictionnaire dans un fichier :
+
+On utilise pour cela la librairie pickle.
+```
+with open('file.txt', 'wb') as f:
+     pickle.dump(dict, f, pickle.HIGHEST_PROTOCOL)
+
+with open('file.txt', 'rb') as f:
+     dict = pickle.load(f)
+```
