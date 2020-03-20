@@ -79,8 +79,12 @@ class Graphics:
     def drawGameOver(self):
         tk.texte(self.size / 2, self.size / 2, "GAME OVER", "red", ancrage="center", police="Helvetica", taille=48)
 
-    def drawPressAnyKey(self):
-        tk.texte(self.size / 2, self.size/2 + 50, "(Press Any Key)", "yellow",
+    def drawQuitTheGame(self):
+        tk.texte(self.size / 2, self.size / 2 + self.size / 4, "Press 'Echap' to quit the game", "yellow",
+                 ancrage="center", police="Helvetica", taille=30)
+
+    def drawUndoAction(self):
+        tk.texte(self.size / 2, self.size / 2 + self.size / 3, "Press 'R' to undo your action", "yellow",
                  ancrage="center", police="Helvetica", taille=30)
 
     # Update the game

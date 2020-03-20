@@ -10,6 +10,8 @@ class Engine:
         self.minotorHPos = posElements.get("H")
         self.minotorVPos = posElements.get("V")
         self.doorPos = posElements.get("P")
+        self.save = []
+        self.registerElements()
 
     # ----------------------------- Player Move ----------------------------------- #
     def checkPlayerMove(self, x, y):
@@ -40,7 +42,34 @@ class Engine:
             if self.checkPlayerMove(x + 1, y) and self.checkPlayerMove(x + 2, y):
                 self.arianePos[0] = x + 2
                 return True
+        elif keyName == 'r':
+            if len(self.save) - 1 > 0:
+                del self.save[-1]
+                size = len(self.save) - 1
+                self.arianePos[0] = self.save[size][0][0]
+                self.arianePos[1] = self.save[size][0][1]
+                self.theseePos[0] = self.save[size][1][0]
+                self.theseePos[1] = self.save[size][1][1]
+                for i, mv in enumerate(self.save[size][2]):
+                    self.minotorVPos[i][0] = mv[0]
+                    self.minotorVPos[i][1] = mv[1]
+                for i, mh in enumerate(self.save[size][3]):
+                    self.minotorHPos[i][0] = mh[0]
+                    self.minotorHPos[i][1] = mh[1]
         return False
+
+    def registerElements(self):
+        ariane = [self.arianePos[0], self.arianePos[1]]
+        thesee = [self.theseePos[0], self.theseePos[1]]
+        minotorV = []
+        minotorH = []
+        for mv in self.minotorVPos:
+            minotorV.append([mv[0], mv[1]])
+        for mh in self.minotorHPos:
+            minotorH.append([mh[0], mh[1]])
+
+        self.save.append([ariane, thesee, minotorV, minotorH])
+
     # ----------------------------- Player Move ----------------------------------- #
 
     # ------------------------------- IA Move ------------------------------------- #
