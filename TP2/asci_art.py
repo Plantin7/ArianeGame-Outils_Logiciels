@@ -79,7 +79,7 @@ def symbols(symbols):
 
 # -------------------------------------- Alphabet --------------------------------------------------- #
 
-def print_string(string, x=80):
+def print_string(string):
     for j in range(8):
         for letter in string:
             if letter in alphabet:
@@ -90,35 +90,63 @@ def print_string(string, x=80):
         print("")
 
 
-def test(string, x):
-    length = computeStringLenght(string)
-    if length <= x:
+def test(string, x=80):
+    length, nb = anotherComputeStringLenght(string, x)
+    if length < x:
         return [string]
     else:
-        diff = (length - x)/10
-        res_first, res_second = string[:8], string[diff:]
-        return [res_first] + test(res_second, x)
+        res_first, res_second = string[:nb], string[nb:]
+        return [res_first.strip()] + test(res_second.strip(), x)
 
 
-def computeStringLenght(string):
+def computeStringLenght(string, x):
     length = 0
+    nbLetter = 0
     for letter in string:
         length += len(alphabet[letter][0])
-    return length
+        if length < x:
+            nbLetter += 1
+    return length, nbLetter
+
+
+def anotherComputeStringLenght(string, x):
+    length = 0
+    nbLetter = 0
+    if len(string.split()) == 1:
+        return computeStringLenght(string, x)
+    else:
+        for word in string.split():
+            tmpLength, nb = computeStringLenght(word, x)
+            if tmpLength + len(alphabet[" "][0]) < x:
+                length += tmpLength + len(alphabet[" "][0])
+                if length < x:
+                    nbLetter += nb + 1
+                else:
+                    return length, nbLetter
+            else:
+                tmpLength
+                return computeStringLenght(string, x)
+    return length, nbLetter
 
 
 if __name__ == '__main__':
     extract_alphabet_ascii()
     extract_numbers_ascii()
     extract_symbols_ascii()
+    if len(sys.argv) != 2:
+        print("File missing !")
+        sys.exit(1)
+    file = open(sys.argv[1], "r")
+    txt = "".join(file.readlines())
+    arr = test(txt.replace('\n', ''))
+    print("")
+    for string in arr:
+        print_string(string)
+
+    '''    
     while True:
-        # rows, columns = os.popen('stty size', 'r').read().split()
         txt = input("Type something to test this out: ")
-        # print(test(txt, 80))
-        arr = test(txt, 80)
+        arr = test(txt)
+        print("")
         for string in arr:
-            print_string(string)
-    '''print(rows, columns)
-    while True:
-        txt = input("Type something to test this out: ")
-        print_string(txt)'''
+            print_string(string)'''
