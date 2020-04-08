@@ -1,12 +1,13 @@
 import upemtk as tk
-import Engine
+import time
 
 
 class Graphics:
 
-    def __init__(self, laby, engine, grid_size, nb_cell, margin):
+    def __init__(self, laby, engine, grid_size, nb_cell):
         self.laby = laby
-        self.margin = margin
+        self.engine = engine
+        self.margin = nb_cell
         self.cellSize = grid_size / nb_cell
         self.arianePos = engine.arianePos
         self.theseePos = engine.theseePos
@@ -14,6 +15,13 @@ class Graphics:
         self.minotorVPos = engine.minotorVPos
         self.doorPos = engine.doorPos
         self.size = grid_size
+
+    def reset(self):
+        self.arianePos = self.engine.arianePos
+        self.theseePos = self.engine.theseePos
+        self.minotorHPos = self.engine.minotorHPos
+        self.minotorVPos = self.engine.minotorVPos
+        self.doorPos = self.engine.doorPos
 
     # Ariane
     def drawPlayerPos(self):
@@ -96,3 +104,8 @@ class Graphics:
         self.drawIAPos()
         self.drawHMinotors()
         self.drawVMinotors()
+        tk.mise_a_jour()
+
+    def updateSolver(self):
+        self.update()
+        time.sleep(0.10)

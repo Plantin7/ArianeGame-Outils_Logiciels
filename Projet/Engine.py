@@ -1,10 +1,11 @@
-import upemtk as tk
+import copy
 
 
 class Engine:
 
     def __init__(self, laby, posElements):
         self.laby = laby
+        self.posElements = copy.deepcopy(posElements)
         self.arianePos = posElements.get("A")
         self.theseePos = posElements.get("T")
         self.minotorHPos = posElements.get("H")
@@ -12,6 +13,7 @@ class Engine:
         self.doorPos = posElements.get("P")
         self.save = []
         self.registerElements()
+        self.currentConf = ()
 
     # ----------------------------- Player Move ----------------------------------- #
     def checkPlayerMove(self, x, y):
@@ -21,20 +23,10 @@ class Engine:
             return False
         return True
 
-    def updateMovePlayer(self, ev):
-        keyName = tk.touche(ev)
-
+    def updatePlayerMove(self, keyName):
         x = self.arianePos[0]
         y = self.arianePos[1]
-        if keyName == 'Left':
-            if self.checkPlayerMove(x, y - 1) and self.checkPlayerMove(x, y - 2):
-                self.arianePos[1] = y - 2
-                return True
-        elif keyName == 'Right':
-            if self.checkPlayerMove(x, y + 1) and self.checkPlayerMove(x, y + 2):
-                self.arianePos[1] = y + 2
-                return True
-        elif keyName == 'Up':
+        if keyName == 'Up':
             if self.checkPlayerMove(x - 1, y) and self.checkPlayerMove(x - 2, y):
                 self.arianePos[0] = x - 2
                 return True
@@ -42,18 +34,27 @@ class Engine:
             if self.checkPlayerMove(x + 1, y) and self.checkPlayerMove(x + 2, y):
                 self.arianePos[0] = x + 2
                 return True
+        elif keyName == 'Left':
+            if self.checkPlayerMove(x, y - 1) and self.checkPlayerMove(x, y - 2):
+                self.arianePos[1] = y - 2
+                return True
+        elif keyName == 'Right':
+            if self.checkPlayerMove(x, y + 1) and self.checkPlayerMove(x, y + 2):
+                self.arianePos[1] = y + 2
+                return True
+
         elif keyName == 'r':
             if len(self.save) - 1 > 0:
                 del self.save[-1]
-                size = len(self.save) - 1
-                self.arianePos[0] = self.save[size][0][0]
-                self.arianePos[1] = self.save[size][0][1]
-                self.theseePos[0] = self.save[size][1][0]
-                self.theseePos[1] = self.save[size][1][1]
-                for i, mv in enumerate(self.save[size][2]):
+                idx = len(self.save) - 1
+                self.arianePos[0] = self.save[idx][0][0]
+                self.arianePos[1] = self.save[idx][0][1]
+                self.theseePos[0] = self.save[idx][1][0]
+                self.theseePos[1] = self.save[idx][1][1]
+                for i, mv in enumerate(self.save[idx][2]):
                     self.minotorVPos[i][0] = mv[0]
                     self.minotorVPos[i][1] = mv[1]
-                for i, mh in enumerate(self.save[size][3]):
+                for i, mh in enumerate(self.save[idx][3]):
                     self.minotorHPos[i][0] = mh[0]
                     self.minotorHPos[i][1] = mh[1]
         return False
@@ -73,12 +74,12 @@ class Engine:
     # ----------------------------- Player Move ----------------------------------- #
 
     # ------------------------------- IA Move ------------------------------------- #
-    def updateMoveThesee(self):
-        if self.checkMoveThesee():
+    def updateTheseeMove(self):
+        if self.checkTheseeMove():
             self.theseePos[0] = self.arianePos[0]
             self.theseePos[1] = self.arianePos[1]
 
-    def checkMoveThesee(self):
+    def checkTheseeMove(self):
         tx, ty = self.theseePos
         ax, ay = self.arianePos
 
@@ -162,7 +163,7 @@ class Engine:
 
     def checkCollisionHMinotor(self, pos):
         for mh in self.minotorHPos:  # A bug minotor, we need to exclude the minotor which call this function
-            if pos == mh:            # This code works because the minotor cannot have a collision with himself
+            if pos == mh:  # This code works because the minotor cannot have a collision with himself
                 return True
         return False
 
@@ -186,4 +187,36 @@ class Engine:
                self.checkCollisionVMinotor(self.theseePos)
 
     # -------------------------- Victory Condition ------------------------------------ #
+    # ---------------------------- Solver Methods ------------------------------------- #
 
+    def setConf(self, c):
+        self.currentConf = (tuple(c[0]),
+                            tuple(c[1]),
+                            tuple(tuple(x) for x in c[2]),
+                            tuple(tuple(x) for x in c[3]))
+
+    def loadConf(self, conf):
+        self.arianePos[0] = conf[0][0]
+        self.arianePos[1] = conf[0][1]
+
+        self.theseePos[0] = conf[1][0]
+        self.theseePos[1] = conf[1][1]
+
+        for i, mv in enumerate(conf[2]):
+            self.minotorVPos[i][0] = mv[0]
+            self.minotorVPos[i][1] = mv[1]
+
+        for i, mh in enumerate(conf[3]):
+            self.minotorHPos[i][0] = mh[0]
+            self.minotorHPos[i][1] = mh[1]
+
+    def reset(self):
+        self.arianePos = self.posElements.get("A")
+        self.theseePos = self.posElements.get("T")
+        self.minotorHPos = self.posElements.get("H")
+        self.minotorVPos = self.posElements.get("V")
+        self.doorPos = self.posElements.get("P")
+        self.save.clear()
+        self.registerElements()
+
+    # ---------------------------- Solver Methods ------------------------------------- #

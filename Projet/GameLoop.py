@@ -2,6 +2,40 @@ from FileManager import *
 from Graphics import *
 from upemtk import *
 from Engine import *
+from Solver import *
+import argparse
+import sys
+
+
+def resetGame(engine, graphics):
+    engine.reset()
+    graphics.reset()
+
+
+def printSolverDFS(plays):
+    for p in plays:
+        graphics.updateSolver()
+        engine.updatePlayerMove(p)
+        engine.updateTheseeMove()
+        engine.updateMinotorsVMove()
+        engine.updateMinotorsHMove()
+
+
+def checkSolverMode(mode):
+    if mode == 'DFS':
+        return True
+    elif mode == 'BFS':
+        return True
+    else:
+        print('[Error] - Solver Mode Unknown : Only DFS or BFS')
+        sys.exit(1)
+
+
+def checkOptionSolverMode(args):
+    if args.graphics or args.solver:
+        return True
+    print('[Error] - Solver Mode must be followed by -g or -s')
+    sys.exit(1)
 
 
 def waiting_key():
@@ -15,17 +49,46 @@ def waiting_key():
 
 
 if __name__ == '__main__':
-    laby, nbCell, posElements = chargeLabyrinth("maps/sandbox.txt")
+    parser = argparse.ArgumentParser(description=' - Guide utilisateur du jeu Ariane et Minotaure -')
+    parser.add_argument('level', type=str, help='maps/labyrintheX.txt')
+    parser.add_argument("-g", "--graphics", action="store_true", help='Graphics Solver Mode = True')
+    parser.add_argument("-s", "--solver", action="store_true", help='Solver Mode = True; IA Play for you')
+    parser.add_argument('solver_mode', nargs='?', type=str, help='DFS or BFS')
+    args = parser.parse_args()
 
-    gridSize = 840
-    margin = nbCell
+    # Checking arguments
+    laby, nbCell, posElements = chargeLabyrinth(args.level)
 
+    # windows size
+    windowsSize = 840
+
+    # initialisation of all objects
     engine = Engine(laby, posElements)
-    graphics = Graphics(laby, engine, gridSize, nbCell, margin)
+    graphics = Graphics(laby, engine, windowsSize, nbCell)
+    solver = Solver(engine, graphics)
+    # InitialConf Used by Solver
+    initialConf = (engine.arianePos, engine.theseePos, engine.minotorVPos, engine.minotorHPos)
 
     # Create Windows
-    cree_fenetre(gridSize + 10, gridSize + 10)
-    validPlay = False
+    cree_fenetre(windowsSize + 10, windowsSize + 10)
+
+    if args.solver_mode:
+        checkSolverMode(args.solver_mode)
+        checkOptionSolverMode(args)
+        if args.solver_mode == 'DFS':
+            if args.graphics:
+                solver.DFS(initialConf, True)
+            else:
+                solver.DFS(initialConf)
+            if args.solver:
+                resetGame(engine, graphics)
+                printSolverDFS(solver.lst)
+        elif args.solver_mode == 'BFS':
+            # TODO
+            pass
+        ferme_fenetre()
+        sys.exit(0)
+
     # Game Loop
     while True:
         graphics.update()
@@ -41,20 +104,21 @@ if __name__ == '__main__':
             graphics.drawQuitTheGame()
             graphics.drawUndoAction()
             ev, tev = waiting_key()
-            if touche(ev) == 'Escape':
+            keyName = touche(ev)
+            if keyName == 'Escape':
                 break
-            elif touche(ev) == 'r':
-                engine.updateMovePlayer(ev)
+            elif keyName == 'r':
+                engine.updatePlayerMove(keyName)
         else:
             ev, tev = waiting_key()
-            validPlay = engine.updateMovePlayer(ev)
+            keyName = touche(ev)
+            validPlay = engine.updatePlayerMove(keyName)
             if touche(ev) == 'Escape':
                 break
             if validPlay:
-                engine.updateMoveThesee()
+                engine.updateTheseeMove()
                 engine.updateMinotorsVMove()
                 engine.updateMinotorsHMove()
                 engine.registerElements()
 
-        mise_a_jour()
     ferme_fenetre()

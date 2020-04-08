@@ -1,10 +1,9 @@
-import os
+import sys
 
 
 def chargeLabyrinth(file):
     """
     Charge la map du labyrinthe depuis le fichier nom.txt
-    :param self:
     :param file: nom du fichier contenant la map du labyrinthe (avec l'extension .txt)
     :return: Les données du labynrinthe dans une liste, le nombre de cellule, la position des personnages
     """
@@ -22,12 +21,11 @@ def chargeLabyrinth(file):
                     posObject[car] = [i, j]
                 elif car == "V" or car == "H":
                     if car in posObject:
-                        posObject[car].append([i, j])
+                        posObject[car] = [i, j]
                     else:
                         posObject[car] = [[i, j]]
-
         file.close()
     except IOError:
         print("[ERROR] - Le fichier ({}) n'a pas pu etre chargé".format(file))
-        os._exit(1)
+        sys.exit(1)
     return laby, size, posObject
