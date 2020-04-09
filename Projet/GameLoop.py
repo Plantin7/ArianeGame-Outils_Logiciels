@@ -12,7 +12,7 @@ def resetGame(engine, graphics):
     graphics.reset()
 
 
-def printSolverDFS(plays):
+def printSolver(plays):
     for p in plays:
         graphics.updateSolver()
         engine.updatePlayerMove(p)
@@ -82,10 +82,15 @@ if __name__ == '__main__':
                 solver.DFS(initialConf)
             if args.solver:
                 resetGame(engine, graphics)
-                printSolverDFS(solver.lst)
+                printSolver(solver.lst)
         elif args.solver_mode == 'BFS':
-            # TODO
-            pass
+            if args.graphics:
+                solver.BFS(initialConf, True)
+            else:
+                solver.BFS(initialConf)
+            if args.solver:
+                resetGame(engine, graphics)
+                printSolver(solver.lst)
         ferme_fenetre()
         sys.exit(0)
 

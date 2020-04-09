@@ -31,6 +31,38 @@ class Solver:
                         self.engine.loadConf(c)
             return False
 
+    def BFS(self, c, isVisible=False):
+        self.engine.setConf(c)
+        a_traiter = [([self.engine.currentConf], [])]
+        self.v.update({self.engine.currentConf})
+        while a_traiter:
+            extract = a_traiter.pop(0)
+            c = extract[0][0]
+            arrayMove = extract[1]
+            self.engine.loadConf(c)
+            if isVisible:
+                self.graphics.updateSolver()
+            if self.engine.isVictory():
+                self.lst = arrayMove
+                return True
+            elif self.engine.isGameOver():
+                continue
+            else:
+                for d in ["Up", "Down", "Left", "Right"]:
+                    newC = self.computeC(d)
+                    if newC is not None:
+                        self.engine.loadConf(c)
+                        if newC not in self.v:
+                            self.v.update({newC})
+                            tmp = arrayMove.copy()
+                            tmp.append(d)
+                            newElement = ([newC], tmp)
+                            a_traiter.append(newElement)
+
+        if not a_traiter:
+            print("Empty")
+            return False
+
     def computeC(self, d):
         if self.engine.updatePlayerMove(d):
             self.engine.updateTheseeMove()
