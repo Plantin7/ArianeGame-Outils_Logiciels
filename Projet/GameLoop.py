@@ -67,7 +67,7 @@ if __name__ == '__main__':
     graphics = Graphics(laby, engine, windowsSize, nbCell)
     solver = Solver(engine, graphics)
     # InitialConf Used by Solver
-    initialConf = (engine.arianePos, engine.theseePos, engine.minotorVPos, engine.minotorHPos)
+    initialConf = (tuple(engine.arianePos), tuple(engine.theseePos), tuple(engine.minotorVPos), tuple(engine.minotorHPos))
 
     # Create Windows
     cree_fenetre(windowsSize + 10, windowsSize + 10)
@@ -82,6 +82,7 @@ if __name__ == '__main__':
                 solver.DFS(initialConf)
             if args.solver:
                 resetGame(engine, graphics)
+                print(len(solver.lst))
                 printSolver(solver.lst)
         elif args.solver_mode == 'BFS':
             if args.graphics:
@@ -90,6 +91,8 @@ if __name__ == '__main__':
                 solver.BFS(initialConf)
             if args.solver:
                 resetGame(engine, graphics)
+                print(len(solver.lst))
+                print(solver.lst)
                 printSolver(solver.lst)
         ferme_fenetre()
         sys.exit(0)

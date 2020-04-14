@@ -8,36 +8,35 @@ class Solver:
     def DFS(self, c, isVisible=False):
         if isVisible:
             self.graphics.updateSolver()
-        self.engine.setConf(c)
         if self.engine.isVictory():
             return True
         elif self.engine.isGameOver():
+            self.engine.loadConf(self.engine.currentConf)
             return False
         else:
             # Adding c into v
+            self.engine.setConf(c)
             self.v.update({self.engine.currentConf})
             directions = ["Up", "Down", "Left", "Right"]
 
             for d in directions:
                 newC = self.computeC(d)
-                if newC is not None:
-                    if newC not in self.v:
-                        if self.DFS(newC, isVisible):
-                            self.lst.insert(0, d)
-                            return True
-                        else:
-                            self.engine.loadConf(c)
-                    else:
-                        self.engine.loadConf(c)
+                if newC is not None and newC not in self.v:
+                    if self.DFS(newC, isVisible):
+                        self.lst.insert(0, d)
+                        return True
+                    self.engine.loadConf(c)
+                else:
+                    self.engine.loadConf(c)
             return False
 
     def BFS(self, c, isVisible=False):
         self.engine.setConf(c)
-        a_traiter = [([self.engine.currentConf], [])]
+        a_traiter = [(self.engine.currentConf, [])]
         self.v.update({self.engine.currentConf})
         while a_traiter:
             extract = a_traiter.pop(0)
-            c = extract[0][0]
+            c = extract[0]
             arrayMove = extract[1]
             self.engine.loadConf(c)
             if isVisible:
@@ -56,11 +55,10 @@ class Solver:
                             self.v.update({newC})
                             tmp = arrayMove.copy()
                             tmp.append(d)
-                            newElement = ([newC], tmp)
+                            newElement = (newC, tmp)
                             a_traiter.append(newElement)
 
         if not a_traiter:
-            print("Empty")
             return False
 
     def computeC(self, d):

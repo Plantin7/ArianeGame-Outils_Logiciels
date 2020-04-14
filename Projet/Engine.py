@@ -159,6 +159,10 @@ class Engine:
         elif self.checkCollisionVMinotor([x, y]) or \
                 self.checkCollisionHMinotor([x, y]):
             return False
+        elif self.checkCollisionHMinotor(self.theseePos):
+            return False
+        elif self.checkCollisionVMinotor(self.theseePos):
+            return False
         return True
 
     def checkCollisionHMinotor(self, pos):
@@ -196,6 +200,8 @@ class Engine:
                             tuple(tuple(x) for x in c[3]))
 
     def loadConf(self, conf):
+        #print(conf)
+        #print(self.arianePos, self.theseePos, self.minotorVPos, self.minotorHPos)
         self.arianePos[0] = conf[0][0]
         self.arianePos[1] = conf[0][1]
 
