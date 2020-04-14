@@ -124,15 +124,10 @@ Exemple :
 # On peut aussi utiliser des mots clés pour éviter de devoir compter.
 "{name} wants to eat {food}".format(name="Bob", food="lasagna") #=> "Bob wants to eat lasagna"
 
-# Il est également possible d'utiliser les f-strings depuis Python 3.6 (https://docs.python.org/3/whatsnew/3.6.html#pep-498-formatted-string-literals)
-name = "Fred"
-f"Il a dit que son nom est {name}." #=> "Il a dit que son nom est Fred."
-
 # Si votre code doit aussi être compatible avec Python 2.5 et moins,
 # vous pouvez encore utiliser l'ancienne syntaxe :
 "Les %s peuvent être %s avec la %s méthode" % ("chaînes", "interpolées", "vieille")
 ```
-
 
 # Les Opérateurs Logiques 
 
