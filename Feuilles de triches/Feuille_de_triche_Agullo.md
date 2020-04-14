@@ -5,6 +5,7 @@ Dernière mise à jour: 07/04/2020
 
 # Table of Contents
 1. [Types primitifs et opérateurs](1_Types_primitifs_et_opérateurs.md)
+2. [Variables et Collections](2_Variables_et_Collections.md)
 
 # A ne pas oublier
 The second paragraph text
