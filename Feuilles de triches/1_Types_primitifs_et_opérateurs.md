@@ -3,8 +3,51 @@
 
 # Les types primitifs
 
+## Les entiers type int
+Un int s'écrit avec les chiffres de 0 à 9. Il y a 3 manières d'écrires un int :
+* la base décimale : le littéral devra commencer par un chiffre entre 1 et 9
+* la base octale (base 8) : le littéral devra commencer par 0 suivi de chiffres de 0 à 7
+* la base hexadécimale (base 16): le littéral devra commencer par 0x suivi de chiffres de 0 à 9 et de lettres de A à F (en minuscule ou majuscule)
 
-# Les booléens
+Exemples : 
+
+```
+x=1
+x=0
+x=-33
+x=4566
+x=2147483647
+x=076 #équivalent à x=62
+x=0xFF #équivalent à x=255
+x=0xa1 #équivalent à x=161
+```
+## Les entiers type long
+Il existe deux manières d'utiliser des long :
+* il faut rajouter L ou l à la fin d'un littéral entier pour qu'il soit automatiquement long
+* lorsque le résultat d'une opération dépasse la capacité de stockage d'un int, alors, ce résultat est automatiquement convertit en long
+
+Exemples :
+
+```
+x=1L
+x=-45l
+x=121212121212121212121212121 #Automatiquement converti en long
+x=2147483647+1
+```
+## Les nombres virgules flotantes (float)
+On déclare un flotant par caractère point pour indiquer la séparation entre la partie entière et la partie décimale ou la lettre 'e' ou 'E' pour spécifier l'exposant. 
+
+Exemples : 
+```
+x = 1.234
+x = 1.0 #Notons qu'un entier peut être un flottant
+x = 1.
+x = 1.234e54 
+x = 1.234E54
+x = -1.454e-2
+```
+
+## Les booléens
 En python les booléens s'écrivent comme suit :
 ```
 True
