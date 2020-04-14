@@ -97,6 +97,42 @@ Exemple :
 # Forcer la priorité de calcul avec des parenthèses
 (1 + 3) * 2  # => 8
 ```
+## Les chaines de caractères (string)
+Les chaînes (ou strings) sont créées avec " ou '
+
+Exemple : 
+```
+# 
+"Ceci est une chaine"
+'Ceci est une chaine aussi.'
+
+# On peut additionner des chaînes aussi ! Mais essayez d'éviter de le faire.
+"Hello " + "world!"  # => "Hello world!"
+# On peut aussi le faire sans utiliser '+'
+"Hello " "world!"  # => "Hello world!"
+
+# On peut traîter une chaîne comme une liste de caractères
+"This is a string"[0]  # => 'T'
+
+# .format peut être utilisé pour formatter des chaînes, comme ceci:
+"{} peuvent etre {}".format("Les chaînes", "interpolées")
+
+# On peut aussi réutiliser le même argument pour gagner du temps.
+"{0} be nimble, {0} be quick, {0} jump over the {1}".format("Jack", "candle stick")
+#=> "Jack be nimble, Jack be quick, Jack jump over the candle stick"
+
+# On peut aussi utiliser des mots clés pour éviter de devoir compter.
+"{name} wants to eat {food}".format(name="Bob", food="lasagna") #=> "Bob wants to eat lasagna"
+
+# Il est également possible d'utiliser les f-strings depuis Python 3.6 (https://docs.python.org/3/whatsnew/3.6.html#pep-498-formatted-string-literals)
+name = "Fred"
+f"Il a dit que son nom est {name}." #=> "Il a dit que son nom est Fred."
+
+# Si votre code doit aussi être compatible avec Python 2.5 et moins,
+# vous pouvez encore utiliser l'ancienne syntaxe :
+"Les %s peuvent être %s avec la %s méthode" % ("chaînes", "interpolées", "vieille")
+```
+
 
 # Les Opérateurs Logiques 
 
