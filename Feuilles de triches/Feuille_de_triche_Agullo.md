@@ -121,6 +121,3 @@ with open('file.txt', 'wb') as f:
 with open('file.txt', 'rb') as f:
      dict = pickle.load(f)
 ```
-
-## Example [](#){name=example}
-## Section1 <a name='id-section1'><a/>
