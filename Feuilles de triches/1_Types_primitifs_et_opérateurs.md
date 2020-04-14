@@ -26,11 +26,14 @@ Exemple :
 ```
 # Les calculs sont ce à quoi on s'attend
 1 + 1  # => 2
+"a" + "b"== "ab" 
 8 - 1  # => 7
 10 * 2  # => 20
 
 # Sauf pour la division qui retourne un float (nombre à virgule flottante)
 35 / 5  # => 7.0
+6/4 == 1 (Python 2) 1.5 (Python 3)
+6./4 == 1.5 
 
 # Résultats de divisions entières tronqués pour les nombres positifs et négatifs
 5 // 3     # => 1
@@ -40,6 +43,7 @@ Exemple :
 
 # Quand on utilise un float, le résultat est un float
 3 * 2.0 # => 6.0
+3 * "s" == "sss" 
 
 # Modulo (reste de la division)
 7 % 3 # => 1
