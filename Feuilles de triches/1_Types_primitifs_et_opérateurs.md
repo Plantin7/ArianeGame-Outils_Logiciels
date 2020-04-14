@@ -24,7 +24,7 @@ Si A est Faux alors l'expression est fausse et B n'est pas évalué, sinon l'exp
 * **not** B (NON Logique) :
 Si A est Faux alors **not** est Vrai et vice versa
 
-Exemple : 
+Exemples : 
 
 ```
 # Opérateurs booléens
@@ -56,3 +56,39 @@ Tout comme les opérateurs logiques, les opérateurs de comparaison renvoient un
 | **<>**           |   différent, on utilisera de préférence !=  |
 | **A is B**       |   A et B représentent le même objet.        |
 | **A is not B**   |   A et B ne représentent pas le même objet. |
+
+Il est possible d'enchaîner les opérateurs : X < Y < Z, c'est Y qui est pris en compte pour la comparaison avec Z et non pas l'évaluation de (X < Y)
+
+Exemple : 
+
+```
+# On vérifie une égalité avec ==
+1 == 1  # => True
+2 == 1  # => False
+
+# On vérifie une inégalité avec !=
+1 != 1  # => False
+2 != 1  # => True
+
+# Autres opérateurs de comparaison
+1 < 10  # => True
+1 > 10  # => False
+2 <= 2  # => True
+2 >= 2  # => True
+
+# On peut enchaîner les comparaisons
+1 < 2 < 3  # => True
+2 < 3 < 2  # => False
+
+# (is vs. ==) is vérifie si deux variables pointent sur le même objet, mais == vérifie
+# si les objets ont la même valeur.
+a = [1, 2, 3, 4] # a pointe sur une nouvelle liste, [1, 2, 3, 4]
+b = a # b pointe sur a
+b is a # => True, a et b pointent sur le même objet
+b == a # => True, les objets a et b sont égaux
+b = [1, 2, 3, 4] # b pointe sur une nouvelle liste, [1, 2, 3, 4]
+b is a # => False, a et b ne pointent pas sur le même objet
+b == a # => True, les objets a et b ne pointent pas sur le même objet
+
+```
+Pour creer des listes voir : [Variables et Collections](2_Variables_et_Collections.md)
