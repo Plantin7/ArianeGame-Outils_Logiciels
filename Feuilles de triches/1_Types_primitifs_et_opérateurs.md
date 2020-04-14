@@ -92,3 +92,14 @@ b == a # => True, les objets a et b ne pointent pas sur le même objet
 
 ```
 Pour creer des listes voir : [Variables et Collections](2_Variables_et_Collections.md)
+
+# Les Opérateurs Mathématiques
+|    Symboles      |     Opération      |  Types                             |
+|  :------------:  |   :-------------:  | :-------------:                    | 
+| **+**            |   Addition         | entier, réel, chaîne de caractères |
+| **-**            |   Soustraction     | entier, réel                       |
+| **`*`**          |   Multiplication   | entier, réel, chaîne de caractères |
+| **`**`**         |   Puissance        | entier, réel                       |
+| **/**            |   Division         | entier, réel                       |
+| **//**           |   Division entière | entier, réel                       |
+| **%**            |   Modulo           | entier, réel                       |
