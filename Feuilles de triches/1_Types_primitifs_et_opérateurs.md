@@ -1,4 +1,4 @@
-1.Types primitifs et opérateurs
+1 - Types primitifs et opérateurs
 =========================
 
 # Les types primitifs
@@ -42,3 +42,17 @@ not False  # => True
 2 == True #=> False
 1 == True #=> True
 ```
+# Les Opérateurs de comparaison
+Tout comme les opérateurs logiques, les opérateurs de comparaison renvoient une valeur booléenne "True" ou "False".
+
+|    Opérateurs    |     Description                             |
+|  :------------:  |   :-------------:                           |
+| **<**            |   strictement inférieur                     |
+| **>**            |   strictement supérieur                     |
+| **<=**           |   inférieur ou égal                         |
+| **>=**           |   supérieur ou égal                         |
+| **==**           |   égal                                      |
+| **!=**           |   différent                                 |
+| **<>**           |   différent, on utilisera de préférence !=  |
+| **A is B**       |   A et B représentent le même objet.        |
+| **A is not B**   |   A et B ne représentent pas le même objet. |
