@@ -10,6 +10,46 @@ En python les booléens s'écrivent comme suit :
 True
 False
 ```
+# Les Opérateurs Mathématiques
+|    Symboles      |     Opération      |  Types                             |
+|  :------------:  |   :-------------:  | :-------------:                    | 
+| **+**            |   Addition         | entier, réel, chaîne de caractères |
+| **-**            |   Soustraction     | entier, réel                       |
+| **`*`**          |   Multiplication   | entier, réel, chaîne de caractères |
+| **`**`**         |   Puissance        | entier, réel                       |
+| **/**            |   Division         | entier, réel                       |
+| **//**           |   Division entière | entier, réel                       |
+| **%**            |   Modulo           | entier, réel                       |
+
+Exemple :
+
+```
+# Les calculs sont ce à quoi on s'attend
+1 + 1  # => 2
+8 - 1  # => 7
+10 * 2  # => 20
+
+# Sauf pour la division qui retourne un float (nombre à virgule flottante)
+35 / 5  # => 7.0
+
+# Résultats de divisions entières tronqués pour les nombres positifs et négatifs
+5 // 3     # => 1
+5.0 // 3.0 # => 1.0 # works on floats too
+-5 // 3  # => -2
+-5.0 // 3.0 # => -2.0
+
+# Quand on utilise un float, le résultat est un float
+3 * 2.0 # => 6.0
+
+# Modulo (reste de la division)
+7 % 3 # => 1
+
+# Exponentiation (x**y, x élevé à la puissance y)
+2**4 # => 16
+
+# Forcer la priorité de calcul avec des parenthèses
+(1 + 3) * 2  # => 8
+```
 
 # Les Opérateurs Logiques 
 
@@ -92,14 +132,3 @@ b == a # => True, les objets a et b ne pointent pas sur le même objet
 
 ```
 Pour creer des listes voir : [Variables et Collections](2_Variables_et_Collections.md)
-
-# Les Opérateurs Mathématiques
-|    Symboles      |     Opération      |  Types                             |
-|  :------------:  |   :-------------:  | :-------------:                    | 
-| **+**            |   Addition         | entier, réel, chaîne de caractères |
-| **-**            |   Soustraction     | entier, réel                       |
-| **`*`**          |   Multiplication   | entier, réel, chaîne de caractères |
-| **`**`**         |   Puissance        | entier, réel                       |
-| **/**            |   Division         | entier, réel                       |
-| **//**           |   Division entière | entier, réel                       |
-| **%**            |   Modulo           | entier, réel                       |
