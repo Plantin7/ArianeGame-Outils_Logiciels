@@ -141,6 +141,10 @@ En utilisant des 'slices'
 Fait une copie d'une profondeur 
 new_lst = lst[:] # => lst = [1, 2, 4, 3] mais (new_lst is lst) vaut False.
 ```
+## Modifier des String en list [voir rappel sur les String](1_Types_primitifs_et_opérateurs.md)
+
+
+
 
 # Les dictionnaires:
 
