@@ -1,5 +1,6 @@
 1 - Types primitifs et opérateurs
 =========================
+Dans cette partie nous aborderons les notions de élémentaires en python.
 
 # Les types primitifs
 
