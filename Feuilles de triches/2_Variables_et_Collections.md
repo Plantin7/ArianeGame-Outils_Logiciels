@@ -141,10 +141,23 @@ En utilisant des 'slices'
 Fait une copie d'une profondeur 
 new_lst = lst[:] # => lst = [1, 2, 4, 3] mais (new_lst is lst) vaut False.
 ```
-## Modifier des String en list [voir rappel sur les String](1_Types_primitifs_et_opérateurs.md)
+## Modifier des String en list (voir rappel sur les [String](1_Types_primitifs_et_opérateurs.md))
 
+Pour convertir une chaine de caractère en une sous liste de chaine on utilisera la méthode split()
 
+```
+chaine ="je suis une chaine"
+lst_chaine = chaine.split() # => ['je', 'suis', 'une', 'chaine]
 
+chaine = "Cet exemple, parmi d'autres, peut encore servir"
+chaine.split(",") # => ['Cet exemple', " parmi d'autres", ' peut encore servir']
+```
+Pour rassemble une liste de chaînes en une seule chaine, on utilisera la méthode join()
+```
+arr = ["Salut", "les", "copains"]
+print( " ".join(arr)) # =>Salut les copains
+print("___".join(arr)) # => Salut___les___copains
+```
 
 # Les dictionnaires:
 
