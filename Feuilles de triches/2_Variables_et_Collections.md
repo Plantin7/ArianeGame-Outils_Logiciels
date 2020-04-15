@@ -304,13 +304,51 @@ d, e, f = 4, 5, 6
 # Voyez comme il est facile d'intervertir deux valeurs :
 e, d = d, e     # d vaut maintenant 5 et e vaut maintenant 4
 ```
-
-
-
-
 # Les sets:
+Les sets permettent de stocker des ensembles
 
+Comment on déclare un set
+```
+On utilise le mot clé set() pour déclarer un set
+empty_set = set()
+
+# Initialiser un set avec des valeurs. Ca ressemble aux dictionnaires
+some_set = {1, 1, 2, 2, 3, 4}   # some_set est maintenant {1, 2, 3, 4}
+
+# Comme les clés d'un dictionnaire, les éléments d'un set doivent être immuables.
+invalid_set = {[1], 1} # => Lève une TypeError: unhashable type: 'list'
+valid_set = {(1,), 1}
+
+```
 ## Les Opérations sur les sets
+
+### Ajouter un objet au set
+On utilise la méthode add
+```
+my_set = {1, 1, 2, 2, 3, 4}
+my_set.add(5)   # filled_set vaut maintenant {1, 2, 3, 4, 5}
+```
+
+### Intersections de deux sets
+On utilise le &
+```
+my_set = {1, 1, 2, 2, 3, 4}
+other_set = {3, 4, 5, 6}
+my_set & other_set   # => {3, 4, 5}
+```
+
+### Union de deux sets
+On utilise le |
+```
+my_set = {1, 1, 2, 2, 3, 4}
+other_set = {3, 4, 5, 6}
+my_set | other_set   # => {1, 2, 3, 4, 5, 6}
+```
+### Difference de deux sets
+On utilise le -
+```
+{1, 2, 3, 4} - {2, 3, 5}   # => {1, 4}
+```
 
 # Les fonctions
 Les fonctions suivantes s'appliquent sur les listes, les dictionnaires, les tuples et les set:
