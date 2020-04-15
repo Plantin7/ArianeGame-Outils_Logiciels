@@ -20,7 +20,7 @@ print("Hello World !", end="")
 print("Hello, World", end="!") # => Hello, World!
 ```
 
-# Les listes:
+# Les listes
 Les listes sont des collections d'objets séparés par des virgules.
 
 Comment déclarer une liste ? :
@@ -82,9 +82,65 @@ lst.pop(1)    # lst vaut maintenant [4]
 
 ```
 ## Autre manière de modifier les listes (Slicing)
+Liste utiliser durant les différents exemples : 
+```
+# On déclare notre list
+lst = [1, 2, 4, 3]
+```
+Accéder à une intervalle 
+```
+lst[1:3]  # => [2, 4]
 
+```
+Omettre les deux premiers éléments
 
+```
+li[2:]  # => [4, 3]
+```
+Prendre les trois premiers éléments 
 
+```
+lst[:3]  # => [1, 2, 4]
+```
+Sélectionner un élément sur deux 
+
+```
+lst[::2]   # =>[1, 4]
+```
+Avoir une copie de la liste à l'envers
+
+```
+li[::-1]   # => [3, 4, 2, 1]
+```
+
+Insertion d'un élément
+
+```
+mots[2:2] = [9] => [1, 2, 9, 4, 3] 
+```
+
+Suppression d'un élément
+
+```
+mots[1:3] = [9] => [1, 9, 3] (le 2 et le 4 ont été supprimés) 
+```
+## Copie de liste
+
+Simple copie
+
+```
+new_lst = lst # => new_lst = [1, 2, 4, 3]
+lst.append(9) # => lst = [1, 2, 4, 3, 9]
+new_lst # => new_lst = [1, 2, 4, 3, 9]
+```
+Il existe une seul liste dans la mémoire de l'ordinateur, la nouvelle liste est seulement une nouvelle référence sur cette liste.
+
+En utilisant des 'slices'
+
+```
+Fait une copie d'une profondeur 
+new_lst = lst[:] # => lst = [1, 2, 4, 3] mais (new_lst is lst) vaut False.
+```
 
 # Les dictionnaires:
 
@@ -97,3 +153,43 @@ lst.pop(1)    # lst vaut maintenant [4]
 # Les sets:
 
 ## Les Opérations sur les sets
+
+# Les fonctions
+Les fonctions suivantes s'appliquent sur les listes, les dictionnaires, les tuples et les set:
+
+## Connaitre la taille d'une collection
+Pour connaitre la taille d'une collection on utilise le mot clé len()
+
+```
+lst = [1, 2, 4, 3]
+len(lst) => 4
+
+dict = {"one": 1, "two": 2, "three": 3}
+len(dict) => 3
+
+tup = (1, 2)
+len(tup) => 2
+
+my_set = {3, 4, 5, 6}
+len(set) => 4
+```
+## Supprimer un élément d'une collection
+Pour supprimer un élément d'une collection il existe le mot clé del
+
+```
+lst = [1, 2, 4, 3]
+del lst[2] # => [1, 2, 3] 
+
+dict = {"one": 1, "two": 2, "three": 3}
+del dict["one"] => dict = {"two": 2, "three": 3}
+
+tup = (1, 2, 3)
+del tup[0] # => (2, 3)
+
+On ne peut pas utiliser del sur des set, on utilisera la méthode remove() de set
+my_set = {3, 4, 5, 6}
+del set[1] => 'set' object doesn't support item deletion
+```
+
+
+
