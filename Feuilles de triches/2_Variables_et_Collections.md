@@ -217,9 +217,9 @@ filled_dict["four"] = 4  # une autre méthode
 ```
 
 ### Récuperer les clés / elements d'un dictionnaire
-Pour récupérer les clés utilisés par un dictionnaire on utilise la méthode keys()
-Pour récupérer les valeurs memorisées par un dictionnaire on utilise la méthode values()
-Pour récupérer les clés et les valeurs d'un dictionnaire on utilise la méthode items()
+Pour récupérer les clés utilisés par un dictionnaire on utilise la méthode keys()  
+Pour récupérer les valeurs memorisées par un dictionnaire on utilise la méthode values()  
+Pour récupérer les clés et les valeurs d'un dictionnaire on utilise la méthode items()  
 
 ```
 my_dict = {"one": 1, "two": 2, "three": 3}
