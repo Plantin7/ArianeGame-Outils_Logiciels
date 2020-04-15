@@ -190,6 +190,36 @@ On ne peut pas utiliser del sur des set, on utilisera la méthode remove() de se
 my_set = {3, 4, 5, 6}
 del set[1] => 'set' object doesn't support item deletion
 ```
+## Minimun et maximun d'une collection
+Pour récupérer le minimum et le maximum il existe deux méthodes
+* min(ma_collection)
+* max(ma_collection)
 
+```
+lst = [1, 2, 4, 3]
+min(lst) => 1
+max(lst) => 4
 
+dict = {"one": 1, "two": 2, "three": 3}
+min(dict) => "one"
+max(dict) => "two"
+
+tup = (1, 2, 3)
+min(tup) => 1
+max(tup) => 3
+
+my_set = {3, 4, 5, 6}
+min(tup) => 3
+max(tup) => 6
+
+```
+## Manipuler des séquences de nombre
+On peut créer des séquences de nombre avec la méthode range()
+
+```
+range(10) # => [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+range(5,13) # => [5, 6, 7, 8, 9, 10, 11, 12]
+range(3,16,3) # => [3, 6, 9, 12, 15]
+
+```
 
