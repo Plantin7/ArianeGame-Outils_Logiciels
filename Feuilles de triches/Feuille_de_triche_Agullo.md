@@ -2,6 +2,9 @@ Feuille de triche Python - Vincent Agullo
 =========================
 Dernière mise à jour: 07/04/2020
 
+Ces feuilles de triches ont pour but d'aborder les notions essentielles de python  
+Il n'est pas impossible qu'il y est des erreurs. Si vous avez le moindre doute je vous invite à regarder sur internet et à me retourner les erreurs pour que je puisse les corriger  
+Je vous souhaite une bonne lecture.
 
 # Table of Contents
 1. [Types primitifs et opérateurs](1_Types_primitifs_et_opérateurs.md)
