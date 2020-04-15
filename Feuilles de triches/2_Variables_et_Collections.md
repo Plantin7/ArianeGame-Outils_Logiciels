@@ -160,8 +160,94 @@ print("___".join(arr)) # => Salut___les___copains
 ```
 
 # Les dictionnaires:
+Les dictionnaires sont des collections dont chaque élément lui ai associé une clé.
+Les clés des dictionnaires doivent être de types immuables.
+Elles doivent être convertibles en une valeur constante pour une recherche rapide.
+
+Comment déclarer un dictionnaire ? :
+```
+empty_dict = {}
+
+# Un dictionnaire pré-rempli :
+filled_dict = {"one": 1, "two": 2, "three": 3}
+
+# Les types immuables incluent les ints, floats, strings et tuples.
+invalid_dict = {[1,2,3]: "123"} # => Lève une TypeError: unhashable type: 'list'
+valid_dict = {(1,2,3):[1,2,3]}  # Par contre, les valeurs peuvent être de tout type.
+```
 
 ## Les Opérations sur les dictionnaires
+
+### Accès à un element
+On trouve une valeur d'un dictionnaire avec []
+```
+
+my_dict = {"one": 1, "two": 2, "three": 3}
+my_dict["one"]   # => 1
+```
+En utilisant les [] l'accès à une clé non-existente lève une KeyError, nous préferons utilisé la méthode get()
+
+```
+my_dict = {"one": 1, "two": 2, "three": 3}
+
+# On utilise "get()" pour éviter la KeyError
+my_dict.get("one")   # => 1
+my_dict.get("four")   # => None
+# La méthode get accepte une valeur de retour par défaut en cas de valeur non-existante.
+my_dict.get("one", 4)   # => 1
+my_dict.get("four", 4)   # => 4
+
+````
+### Insérer un element
+
+Insérer une valeur dans un dictionnaire si la clé n'est pas présente.
+
+```
+my_dict = {"one": 1, "two": 2, "three": 3}
+my_dict.setdefault("five", 5)  # my_dict["five"] devient 5
+my_dict.setdefault("five", 6)  # my_dict["five"] est toujours 5
+```
+Ajouter à un dictionnaire
+```
+my_dict.update({"four":4}) #=> {"one": 1, "two": 2, "three": 3, "four": 4}
+filled_dict["four"] = 4  # une autre méthode
+```
+
+### Récuperer les clés / elements d'un dictionnaire
+Pour récupérer les clés utilisés par un dictionnaire on utilise la méthode keys()
+Pour récupérer les valeurs memorisées par un dictionnaire on utilise la méthode values()
+Pour récupérer les clés et les valeurs d'un dictionnaire on utilise la méthode items()
+
+```
+my_dict = {"one": 1, "two": 2, "three": 3}
+print (my_dict.keys()) => ['one', 'two', 'three']
+
+Le mot clé list() pour avoir une liste Note: l'ordre n'est pas garanti.
+list(filled_dict.keys())   # => ["three", "two", "one"]
+
+print (my_dict.values()) => [1, 2, 3]
+Là aussi, il faut utiliser list() pour avoir une liste.
+Note : l'ordre n'est toujours pas garanti.
+list(filled_dict.values())   # => [3, 2, 1]
+
+
+#La méthode items() extrait du dictionnaire une liste équivalente de tuples
+print (my_dict.items()) => [("one", 1), ("two", 2), ("three", 3)]
+```
+
+### Copier un dictionnaire
+La méthode copy() permet d'effectuer une vraie copie d'un dictionnaire.
+
+```
+my_dict = {"one": 1, "two": 2, "three": 3}
+new_dict = my_dict.copy()
+new_dict["four"] = 4
+
+my_dict # => {"one": 1, "two": 2, "three": 3}
+new_dict # => {"one": 1, "two": 2, "three": 3, "four": 4}
+
+```
+
 
 # Les tuples:
 
@@ -174,6 +260,26 @@ print("___".join(arr)) # => Salut___les___copains
 # Les fonctions
 Les fonctions suivantes s'appliquent sur les listes, les dictionnaires, les tuples et les set:
 
+## Savoir si un element est dans une collection
+Pour savoir si un element est dans une collection on utilise le mot clé in
+
+```
+lst = [1, 2, 4, 3]
+2 in lst => True
+
+my_dict = {"one": 1, "two": 2, "three": 3}
+# On vérifie la présence d'une clé dans un dictionnaire avec "in"
+"one" in my_dict   # => True
+1 in my_dict   # => False
+
+tup = (1, 2)
+2 in tup => True
+
+my_set = {3, 4, 5, 6}
+2 in my_set => False
+3 in my_set => True
+```
+
 ## Connaitre la taille d'une collection
 Pour connaitre la taille d'une collection on utilise le mot clé len()
 
@@ -181,8 +287,8 @@ Pour connaitre la taille d'une collection on utilise le mot clé len()
 lst = [1, 2, 4, 3]
 len(lst) => 4
 
-dict = {"one": 1, "two": 2, "three": 3}
-len(dict) => 3
+my_dict = {"one": 1, "two": 2, "three": 3}
+len(my_dict) => 3
 
 tup = (1, 2)
 len(tup) => 2
@@ -197,8 +303,8 @@ Pour supprimer un élément d'une collection il existe le mot clé del
 lst = [1, 2, 4, 3]
 del lst[2] # => [1, 2, 3] 
 
-dict = {"one": 1, "two": 2, "three": 3}
-del dict["one"] => dict = {"two": 2, "three": 3}
+my_dict = {"one": 1, "two": 2, "three": 3}
+del my_dict["one"] => dict = {"two": 2, "three": 3}
 
 tup = (1, 2, 3)
 del tup[0] # => (2, 3)
@@ -217,9 +323,9 @@ lst = [1, 2, 4, 3]
 min(lst) => 1
 max(lst) => 4
 
-dict = {"one": 1, "two": 2, "three": 3}
-min(dict) => "one"
-max(dict) => "two"
+my_dict = {"one": 1, "two": 2, "three": 3}
+min(my_dict) => "one"
+max(my_dict) => "two"
 
 tup = (1, 2, 3)
 min(tup) => 1
