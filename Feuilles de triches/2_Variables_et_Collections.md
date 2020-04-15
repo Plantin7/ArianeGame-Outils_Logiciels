@@ -1,6 +1,6 @@
 2 - Variables et Collections
 ==========================
-
+Dans cette partie nous aborderons les notions de collections nottament les listes, les dictionnaires, les tuples et les set.
 
 # Afficher du texte
 En python il existe une fonction pour afficher du texte : print()
@@ -141,6 +141,19 @@ En utilisant des 'slices'
 Fait une copie d'une profondeur 
 new_lst = lst[:] # => lst = [1, 2, 4, 3] mais (new_lst is lst) vaut False.
 ```
+## Concaténer deux listes
+On peut concaténer des listes soit avec un '+' soit avec la méthode extend()
+
+```
+lst = [1, 2, 3]
+other_lst = [4, 5, 6]
+# On peut additionner des listes
+# Note: les valeurs de lst et other_lst ne sont pas modifiées.
+lst + other_lst   # => [1, 2, 3, 4, 5, 6]
+
+lst.extend(other_lst)   # Maintenant li contient [1, 2, 3, 4, 5, 6]
+```
+
 ## Modifier des String en list (voir rappel sur les [String](1_Types_primitifs_et_opérateurs.md))
 
 Pour convertir une chaine de caractère en une sous liste de chaine on utilisera la méthode split()
@@ -253,8 +266,47 @@ new_dict # => {"one": 1, "two": 2, "three": 3, "four": 4}
 
 
 # Les tuples:
+Python propose un type de données appelé tuple qui est semblable à une liste mais qui sont immuable (pas modifiable).
+
+Comment on déclare un tuple ?
+
+```
+empty_tuple = ()
+tup = (1, 2, 3)
+```
 
 ## Les Opérations sur les tuples
+
+### Accès à un element
+On accède à la valeur d'un tuple comme dans une liste
+
+```
+tup = (1, 2, 3)
+tup[0]   # => 1
+tup[0] = 3  # Lève une TypeError
+```
+### Memes opérations que les listes
+
+```
+tup = (1, 2, 3)
+tup + (4, 5, 6)   # => (1, 2, 3, 4, 5, 6)
+tup[:2]   # => (1, 2)
+```
+
+### Récupérer les valeurs d'un tuple
+Il est très facile avec des tuples de récupérer des valeurs, et de les intervertir
+
+```
+# Vous pouvez décomposer des tuples (ou des listes) dans des variables
+a, b, c = (1, 2, 3)     # a vaut 1, b vaut 2 et c vaut 3
+# Les tuples sont créés par défaut sans parenthèses
+d, e, f = 4, 5, 6
+# Voyez comme il est facile d'intervertir deux valeurs :
+e, d = d, e     # d vaut maintenant 5 et e vaut maintenant 4
+```
+
+
+
 
 # Les sets:
 
