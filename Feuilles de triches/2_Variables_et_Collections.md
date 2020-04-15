@@ -160,9 +160,12 @@ print("___".join(arr)) # => Salut___les___copains
 ```
 
 # Les dictionnaires:
-Les dictionnaires sont des collections dont chaque élément lui ai associé une clé.
-Les clés des dictionnaires doivent être de types immuables.
-Elles doivent être convertibles en une valeur constante pour une recherche rapide.
+Les dictionnaires sont des collections dont chaque élément lui ai associé une clé  
+
+Les clés des dictionnaires doivent être de types immuables  
+
+Elles doivent être convertibles en une valeur constante pour une recherche rapide  
+
 
 Comment déclarer un dictionnaire ? :
 ```
