@@ -29,7 +29,7 @@ The second paragraph text
 if __name__ == '__main__':
      # TODO
 ```
-6. En python on peut retourner un couple de valeur dans une fonction. Rien de plus simple, il suffit de faire ceci :
+6. En python on peut retourner un couple de valeur dans une fonction.
 
 ```
 def maFonction(n):
@@ -51,37 +51,6 @@ fichier = open("to/path/file", "r") (r pour read, w pour write, rw pour read and
 Autre manière :
 fichier.readline
 
-9. Une autre manière d'utiliser les for (matrice):
-```
-[[o for _ in range(10)] for _ in range(10)]
-```
-
-10. Ajouter un conteur à un itérable : Pour cela on utilise le mot clef enumerate
-```
-l = ["eat","sleep","repeat"] 
-  
-for el in enumerate(l): 
-    print el
-
-for count,el in enumerate(l, 100): 
-    print count,el 
-```
-
- 11. Convertir des données en chaines de caractères:
- On utilise pour cela le mot clef "str()"
-
- 12. Les puissances en python :
-     On utilise les ** : ex 2 ** 3 = 8
- 
- 13. Les dictionnaires :
-```
-dict = {}
-
-# Pour verifier si un élément est dans un dictionnaire 
-
-if not value in dict :
-   #TODO
-```
 14. Itérer sur deux listes en parallèle : 
 ```
 for f, b in zip(foo, bar):
@@ -90,20 +59,10 @@ for f, b in zip(foo, bar):
 Le zip s'arrête lorsque le plus petit des foo ou bar s'arrête.
 Zip retourne un itérateur de tuples
 
-15. Taille d'une chaine de caractère :
-```
-len("MyWord")
-```
 16. Valeur absolue :
 ```
 abs(1 - 2) # = 1
 ```
-17. Récupérer tout les caractères d'une chaine de caractère sauf la première.
-```
-string = "String"
-print(string[1:]) # print "tring"
-```
-
 18. Lire un fichier sans les caractères de fin de ligne :
 ```
 f = open("file", 'r')
