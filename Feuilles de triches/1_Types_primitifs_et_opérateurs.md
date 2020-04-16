@@ -129,6 +129,11 @@ Exemple :
 # vous pouvez encore utiliser l'ancienne syntaxe :
 "Les %s peuvent être %s avec la %s méthode" % ("chaînes", "interpolées", "vieille")
 ```
+Convertir des données en chaines de caractères :
+On utilise pour cela le mot clef "str()"
+```
+print(str(10)) # => "10"
+```
 
 # Les Opérateurs Logiques 
 
