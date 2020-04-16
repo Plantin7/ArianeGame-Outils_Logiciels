@@ -121,3 +121,9 @@ next(it)  #=> "three"
 # Après que l'itérateur a retourné toutes ses données, il lève une exception StopIterator
 next(it) # Lève une StopIteration
  ```
+ 
+ # Creer une matrice
+ ```
+ Une autre manière d'utiliser les for pour creer une matrice
+ [[o for _ in range(10)] for _ in range(10)]
+ ```
