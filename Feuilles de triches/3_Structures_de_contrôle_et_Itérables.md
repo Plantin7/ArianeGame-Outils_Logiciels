@@ -106,6 +106,22 @@ with open("myfile.txt") as f:
     for line in f:
         print(line)
  ```
+## Quelques méthodes utiles sur les fichiers
+
+```
+Ouvrir un fichier
+fichier = open("to/path/file", "r") (r pour read, w pour write, rw pour read and write)
+
+Lire un fichier sans les caractères de fin de ligne :
+
+f = open("file", 'r')
+x = f.read().splitlines() # ou readline 
+f.close()
+
+Creer un fichier si il existe pas :
+
+open('file.txt', 'w+')
+```
  
  # L'objet itérable
  On peut creer un itéreteur sur un objet avec le mot clé iter()
