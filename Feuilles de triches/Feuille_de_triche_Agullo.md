@@ -9,7 +9,9 @@ Je vous souhaite une bonne lecture.
 # Table of Contents
 1. [Types primitifs et opérateurs](1_Types_primitifs_et_opérateurs.md)
 2. [Variables et Collections](2_Variables_et_Collections.md)
-2. [Structures de contrôle et Itérables](3_Structures_de_contrôle_et_Itérables.md)
+3. [Structures de contrôle et Itérables](3_Structures_de_contrôle_et_Itérables.md)
+4. [Fonctions](4_Fonctions.md)
+
 
 # A ne pas oublier
 The second paragraph text
@@ -28,19 +30,6 @@ The second paragraph text
 ```
 if __name__ == '__main__':
      # TODO
-```
-6. En python on peut retourner un couple de valeur dans une fonction.
-
-```
-def maFonction(n):
-    # CODE
-    return a, b
-```
-
-7. Argument Optionel 
-```
-def maFonction (a, b = 0):
-    #TODO
 ```
 
 8. Ouvrir un fichier :
