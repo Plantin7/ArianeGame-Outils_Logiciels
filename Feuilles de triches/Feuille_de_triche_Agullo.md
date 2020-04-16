@@ -11,26 +11,14 @@ Je vous souhaite une bonne lecture.
 2. [Variables et Collections](2_Variables_et_Collections.md)
 3. [Structures de contrôle et Itérables](3_Structures_de_contrôle_et_Itérables.md)
 4. [Fonctions](4_Fonctions.md)
-
+5. [Classes](5_Classes.md)
 
 # A ne pas oublier
-The second paragraph text
-1. Definir une fonction 
-```
-  def maFonction():
-     # CODE
-```
 2. On lance le programme depuis le terminal avec `python3 Exercice1.py`
 
 3. Les commentaires suivent un #
 
 4. Les commentaires sur plusieurs lignes : on utilise les '''
-
-5. Le main en Python
-```
-if __name__ == '__main__':
-     # TODO
-```
 
 8. Ouvrir un fichier :
 
