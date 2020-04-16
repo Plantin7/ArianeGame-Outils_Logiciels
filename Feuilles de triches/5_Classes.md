@@ -22,3 +22,11 @@ def say(self, msg):
 ```
 # Les méthodes statiques
 Une méthode statique est appelée sans référence à une instance ni à une classe. Elle est déclaré en dehors de la class
+
+# Le main
+
+La fonction main est défini comme suit
+```
+if __name__ == '__main__':
+     # TODO
+```
