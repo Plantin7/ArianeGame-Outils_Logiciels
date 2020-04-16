@@ -127,3 +127,12 @@ next(it) # Lève une StopIteration
  Une autre manière d'utiliser les for pour creer une matrice
  [[o for _ in range(10)] for _ in range(10)]
  ```
+ 
+ # Ajouter un compteur à un itérable : enumerate
+```
+l = ["eat","sleep","repeat"] 
+  
+for i, el in enumerate(l): 
+    print (i) # 0 puis 1 puis 2
+    print (el) # "eat", "sleep", "repeat"
+```
