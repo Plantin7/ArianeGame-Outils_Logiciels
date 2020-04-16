@@ -40,14 +40,6 @@ fichier = open("to/path/file", "r") (r pour read, w pour write, rw pour read and
 Autre manière :
 fichier.readline
 
-14. Itérer sur deux listes en parallèle : 
-```
-for f, b in zip(foo, bar):
-    print(f, b)
-```
-Le zip s'arrête lorsque le plus petit des foo ou bar s'arrête.
-Zip retourne un itérateur de tuples
-
 16. Valeur absolue :
 ```
 abs(1 - 2) # = 1
