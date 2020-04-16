@@ -6,51 +6,15 @@ Ces feuilles de triches ont pour but d'aborder les notions essentielles de pytho
 Il n'est pas impossible qu'il y est des erreurs. Si vous avez le moindre doute je vous invite à regarder sur internet et à me retourner les erreurs pour que je puisse les corriger  
 Je vous souhaite une bonne lecture.
 
-# Table of Contents
+# Sommaire
 1. [Types primitifs et opérateurs](1_Types_primitifs_et_opérateurs.md)
 2. [Variables et Collections](2_Variables_et_Collections.md)
 3. [Structures de contrôle et Itérables](3_Structures_de_contrôle_et_Itérables.md)
 4. [Fonctions](4_Fonctions.md)
 5. [Classes](5_Classes.md)
+6. [Modules](6_Modules.md)
 
 # A ne pas oublier
-2. On lance le programme depuis le terminal avec `python3 Exercice1.py`
-
-3. Les commentaires suivent un #
-
-4. Les commentaires sur plusieurs lignes : on utilise les '''
-
-8. Ouvrir un fichier :
-
-```
-fichier = open("to/path/file", "r") (r pour read, w pour write, rw pour read and write)
-```
-Autre manière :
-fichier.readline
-
-16. Valeur absolue :
-```
-abs(1 - 2) # = 1
-```
-18. Lire un fichier sans les caractères de fin de ligne :
-```
-f = open("file", 'r')
-x = f.read().splitlines()
-f.close()
-```
-
-19. Creer un fichier si il existe pas :
-```
-open('file.txt', 'w+')
-```
-
-20. Pour sauvegarder et charger un dictionnaire dans un fichier :
-
-On utilise pour cela la librairie pickle.
-```
-with open('file.txt', 'wb') as f:
-     pickle.dump(dict, f, pickle.HIGHEST_PROTOCOL)
-
-with open('file.txt', 'rb') as f:
-     dict = pickle.load(f)
-```
+* On lance le programme depuis le terminal avec `python3 mon_programme.py`
+* Les commentaires suivent un #
+* Les commentaires sur plusieurs lignes : on utilise les '''
