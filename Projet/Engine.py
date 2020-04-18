@@ -13,7 +13,10 @@ class Engine:
         self.doorPos = posElements.get("P")
         self.save = []
         self.registerElements()
-        self.currentConf = ()
+        self.currentConf = (tuple(self.arianePos),
+                            tuple(self.theseePos),
+                            tuple(tuple(x) for x in self.minotorVPos),
+                            tuple(tuple(x) for x in self.minotorHPos))
 
     # ----------------------------- Player Move ----------------------------------- #
     def checkPlayerMove(self, x, y):
@@ -191,17 +194,9 @@ class Engine:
                self.checkCollisionVMinotor(self.theseePos)
 
     # -------------------------- Victory Condition ------------------------------------ #
-    # ---------------------------- Solver Methods ------------------------------------- #
-
-    def setConf(self, c):
-        self.currentConf = (tuple(c[0]),
-                            tuple(c[1]),
-                            tuple(tuple(x) for x in c[2]),
-                            tuple(tuple(x) for x in c[3]))
+    # ---------------------------- Solver Method ------------------------------------- #
 
     def loadConf(self, conf):
-        #print(conf)
-        #print(self.arianePos, self.theseePos, self.minotorVPos, self.minotorHPos)
         self.arianePos[0] = conf[0][0]
         self.arianePos[1] = conf[0][1]
 

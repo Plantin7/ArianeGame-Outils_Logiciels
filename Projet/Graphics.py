@@ -4,6 +4,7 @@ import time
 
 class Graphics:
 
+    """ Constructor """
     def __init__(self, laby, engine, grid_size, nb_cell):
         self.laby = laby
         self.engine = engine
@@ -107,5 +108,9 @@ class Graphics:
         tk.mise_a_jour()
 
     def updateSolver(self):
+        self.update()
+        time.sleep(0.25)
+
+    def updateGraphicalSolver(self):
         self.update()
         time.sleep(0.10)

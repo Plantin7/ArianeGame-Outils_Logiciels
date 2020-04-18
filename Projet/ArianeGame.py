@@ -7,9 +7,9 @@ import argparse
 import sys
 
 
-def resetGame(engine, graphics):
-    engine.reset()
-    graphics.reset()
+def resetGame(eng, graph):
+    eng.reset()
+    graph.reset()
 
 
 def printSolver(plays):
@@ -31,8 +31,8 @@ def checkSolverMode(mode):
         sys.exit(1)
 
 
-def checkOptionSolverMode(args):
-    if args.graphics or args.solver:
+def checkOptionSolverMode(arguments):
+    if arguments.graphics or arguments.solver:
         return True
     print('[Error] - Solver Mode must be followed by -g or -s')
     sys.exit(1)
@@ -49,6 +49,7 @@ def waiting_key():
 
 
 if __name__ == '__main__':
+    # Check arguments passing in parameter
     parser = argparse.ArgumentParser(description=' - Guide utilisateur du jeu Ariane et Minotaure -')
     parser.add_argument('level', type=str, help='maps/labyrintheX.txt')
     parser.add_argument("-g", "--graphics", action="store_true", help='Graphics Solver Mode = True')
@@ -67,11 +68,12 @@ if __name__ == '__main__':
     graphics = Graphics(laby, engine, windowsSize, nbCell)
     solver = Solver(engine, graphics)
     # InitialConf Used by Solver
-    initialConf = (tuple(engine.arianePos), tuple(engine.theseePos), tuple(engine.minotorVPos), tuple(engine.minotorHPos))
+    initialConf = engine.currentConf
 
     # Create Windows
     cree_fenetre(windowsSize + 10, windowsSize + 10)
 
+    # *********************************** SOLVER MODE ****************************************** #
     if args.solver_mode:
         checkSolverMode(args.solver_mode)
         checkOptionSolverMode(args)
@@ -82,7 +84,8 @@ if __name__ == '__main__':
                 solver.DFS(initialConf)
             if args.solver:
                 resetGame(engine, graphics)
-                print(len(solver.lst))
+                print(len(solver.lst), "coups :")
+                print(solver.lst)
                 printSolver(solver.lst)
         elif args.solver_mode == 'BFS':
             if args.graphics:
@@ -91,12 +94,13 @@ if __name__ == '__main__':
                 solver.BFS(initialConf)
             if args.solver:
                 resetGame(engine, graphics)
-                print(len(solver.lst))
+                print(len(solver.lst), "coups :")
                 print(solver.lst)
                 printSolver(solver.lst)
         ferme_fenetre()
         sys.exit(0)
-
+    # *********************************** END SOLVER MODE ****************************************** #
+    # *********************************** CLASSIC GAME ****************************************** #
     # Game Loop
     while True:
         graphics.update()
@@ -130,3 +134,4 @@ if __name__ == '__main__':
                 engine.registerElements()
 
     ferme_fenetre()
+    # *********************************** END CLASSIC GAME ****************************************** #

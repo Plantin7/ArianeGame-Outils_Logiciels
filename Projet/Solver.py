@@ -7,40 +7,39 @@ class Solver:
 
     def DFS(self, c, isVisible=False):
         if isVisible:
-            self.graphics.updateSolver()
+            self.graphics.updateGraphicalSolver()
+
         if self.engine.isVictory():
             return True
         elif self.engine.isGameOver():
-            self.engine.loadConf(self.engine.currentConf)
             return False
         else:
             # Adding c into v
-            self.engine.setConf(c)
-            self.v.update({self.engine.currentConf})
-            directions = ["Up", "Down", "Left", "Right"]
+            self.v.update({c})
 
-            for d in directions:
+            for d in ["Up", "Down", "Left", "Right"]:
                 newC = self.computeC(d)
-                if newC is not None and newC not in self.v:
-                    if self.DFS(newC, isVisible):
-                        self.lst.insert(0, d)
-                        return True
-                    self.engine.loadConf(c)
-                else:
-                    self.engine.loadConf(c)
+                if newC is not None:
+                    if newC not in self.v:
+                        if self.DFS(newC, isVisible):
+                            self.lst.insert(0, d)
+                            return True
+                        else:
+                            self.engine.loadConf(c)
+                    else:
+                        self.engine.loadConf(c)
             return False
 
     def BFS(self, c, isVisible=False):
-        self.engine.setConf(c)
-        a_traiter = [(self.engine.currentConf, [])]
-        self.v.update({self.engine.currentConf})
+        a_traiter = [(c, [])]
+        self.v.update({c})
         while a_traiter:
             extract = a_traiter.pop(0)
             c = extract[0]
             arrayMove = extract[1]
             self.engine.loadConf(c)
             if isVisible:
-                self.graphics.updateSolver()
+                self.graphics.updateGraphicalSolver()
             if self.engine.isVictory():
                 self.lst = arrayMove
                 return True

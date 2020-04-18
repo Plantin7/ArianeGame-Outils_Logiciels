@@ -21,7 +21,7 @@ def chargeLabyrinth(file):
                     posObject[car] = [i, j]
                 elif car == "V" or car == "H":
                     if car in posObject:
-                        posObject[car] = [i, j]
+                        posObject[car].append([i, j])
                     else:
                         posObject[car] = [[i, j]]
         file.close()
