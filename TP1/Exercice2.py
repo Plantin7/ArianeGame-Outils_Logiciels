@@ -11,31 +11,16 @@ def distance1(st1, st2):
     if len(st2) == 0:
         return len(st1)
 
-    # We call tuple() to force strings to be used as sequences
-    # ('c', 'a', 't', 's') - numpy uses them as values by default.
     st1 = np.array(tuple(st1))
     st2 = np.array(tuple(st2))
 
-    # We use a dynamic programming algorithm, but with the
-    # added optimization that we only need the last two rows
-    # of the matrix.
     previous_row = np.arange(st2.size + 1)
     for s in st1:
-        # Insertion (st2 grows longer than st1):
         current_row = previous_row + 1
-
-        # Substitution or matching:
-        # Target and st1 items are aligned, and either
-        # are different (cost of 1), or are the same (cost of 0).
-        current_row[1:] = np.minimum(
-            current_row[1:],
-            np.add(previous_row[:-1], st2 != s))
+        current_row[1:] = np.minimum(current_row[1:], np.add(previous_row[:-1], st2 != s))
 
         # Deletion (st2 grows shorter than st1):
-        current_row[1:] = np.minimum(
-            current_row[1:],
-            current_row[0:-1] + 1)
-
+        current_row[1:] = np.minimum(current_row[1:], current_row[0:-1] + 1)
         previous_row = current_row
 
     return previous_row[-1]
@@ -110,8 +95,8 @@ if __name__ == '__main__':
     print("[DEBUG] - (Après memoisation) Le(s) mot(s) le(s) plus proche(s) du mot << Tomate >> : " + str(
         plusProche("Tomate", array)))
 
-'''
-- 4 Après memoisation, le mot le plus proche est trouvé instantanément. Alors que le premier passage met un peu de temps.
+'''- 4 Après memoisation, le mot le plus proche est trouvé instantanément. 
+       Alors que le premier passage met un peu de temps. 
 
 - 7 La complexité d'un dictionnaire en python est O(1) par conséquent cette amélioration est pertinente !
     Elle nous permet d'obtenir le résultat déjà calculé instantanémement !

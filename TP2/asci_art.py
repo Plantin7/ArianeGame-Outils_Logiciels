@@ -1,6 +1,4 @@
-import os
 import sys
-import time
 
 alphabet = {}
 
@@ -8,24 +6,28 @@ alphabet = {}
 # -------------------------------------- Alphabet --------------------------------------------------- #
 def info_letter(array):
     longest_line = 0
+    # get the longest line for a letter
     for line in array:
         if longest_line < len(line.strip("\n")):
             longest_line = len(line.strip("\n"))
 
+    # create an array of array with the longuest line
     letter = [[" " for _ in range(longest_line)] for _ in range(8)]
 
+    # fill my array of array
     for i, line, in enumerate(array):
         for j, c in enumerate(line.strip('\n')):
             letter[i][j] = c
 
-    for idx, line in enumerate(letter):
-        letter[idx] = ''.join(line)
+    # Reduce the array of array of character to array of string
+    for i, line in enumerate(letter):
+        letter[i] = ''.join(line)
 
     return letter
 
 
-def extract_ascii(file):
-    with open(file, "r") as fp:
+def extract_ascii(fileToExtract):
+    with open(fileToExtract, "r") as fp:
         tmp = []
         ext = []
         for i, line in enumerate(fp, 1):
@@ -53,8 +55,8 @@ def extract_symbols_ascii():
     symbols(ext)
 
 
-def uppercase(uppsercase_alphabet):
-    for i, letter in enumerate(uppsercase_alphabet):
+def uppercase(uppercase_alphabet):
+    for i, letter in enumerate(uppercase_alphabet):
         x = chr(ord('A') + i)
         alphabet[x] = letter
 
@@ -65,57 +67,61 @@ def lowercase(lowercase_alphabet):
         alphabet[x] = letter
 
 
-def numbers(numbers):
-    for i, number in enumerate(numbers):
+def numbers(nb):
+    for i, number in enumerate(nb):
         x = chr(ord('0') + i)
         alphabet[x] = number
 
 
-def symbols(symbols):
-    arr = [",", ";", ":", "!", "?", ".", "/", "\"", "'", "(", "-", ")", "[", "|", "]", " "]
-    for i, sb in enumerate(symbols):
-        alphabet[arr[i]] = sb
+def symbols(sym):
+    array = [",", ";", ":", "!", "?", ".", "/", "\"", "'", "(", "-", ")", "[", "|", "]", " "]
+    for i, sb in enumerate(sym):
+        alphabet[array[i]] = sb
 
 
 # -------------------------------------- Alphabet --------------------------------------------------- #
 
-def print_string(string):
+def print_string(st):
     for j in range(8):
-        for letter in string:
+        for letter in st:
             if letter in alphabet:
                 print(alphabet[letter][j], end="")
             else:
-                print("Error : Letter Unknown !")
-                sys.exit(1)
+                print("########", end="")
         print("")
 
 
-def splitString(string, x=80):
-    length, nb = anotherComputeStringLenght(string, x)
+def splitString(st, x=80):
+    length, nb = getNumberOfStringToPrint(st, x)
     if length < x:
-        return [string]
+        return [st]
     else:
-        res_first, res_second = string[:nb], string[nb:]
+        res_first, res_second = st[:nb], st[nb:]
         return [res_first.strip()] + splitString(res_second.strip(), x)
 
 
-def computeStringLenght(string, x):
+def computeStringLenght(st, x):
     length = 0
     nbLetter = 0
-    for letter in string:
-        length += len(alphabet[letter][0])
-        if length < x:
-            nbLetter += 1
+    for letter in st:
+        if letter in alphabet:
+            length += len(alphabet[letter][0])
+            if length < x:
+                nbLetter += 1
+        else:
+            length += 8
+            if length < x:
+                nbLetter += 1
     return length, nbLetter
 
 
-def anotherComputeStringLenght(string, x):
+def getNumberOfStringToPrint(st, x):
     length = 0
     nbLetter = 0
-    if len(string.split()) == 1:
-        return computeStringLenght(string, x)
+    if len(st.split()) == 1:
+        return computeStringLenght(st, x)
     else:
-        for word in string.split():
+        for word in st.split():
             tmpLength, nb = computeStringLenght(word, x)
             if tmpLength + len(alphabet[" "][0]) < x:
                 length += tmpLength + len(alphabet[" "][0])
@@ -124,8 +130,7 @@ def anotherComputeStringLenght(string, x):
                 else:
                     return length, nbLetter
             else:
-                tmpLength
-                return computeStringLenght(string, x)
+                return computeStringLenght(st, x)
     return length, nbLetter
 
 
@@ -142,11 +147,3 @@ if __name__ == '__main__':
 
     for string in arr:
         print_string(string)
-
-    '''    
-    while True:
-        txt = input("Type something to test this out: ")
-        arr = test(txt)
-        print("")
-        for string in arr:
-            print_string(string)'''
